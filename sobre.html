@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" lang="pt-br"/>
+    <meta name="viewport" content="width=device-width"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+
+    <title>Quem somos</title>
+    
+    <style>
+        /* Estilos para o cabeçalho em telas grandes */
+body{
+  padding: 0;
+  margin: 0;
+  border: 0;
+  overflow-x: hidden;
+}
+
+.logo a{
+  color: #fff;
+  margin-left: 10px;
+}
+.pes{
+  color: #000000;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+p{
+  padding: 30px;
+}
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+.d-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #048c2d;
+  height: 10vh;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  
+}
+
+button {
+    background-color: #048c2d;
+    color: #FFFFFF;
+    font-size: 14px;
+    border: none;
+    margin-left: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #004e17;
+  }
+  .menu-icon {
+    display: none;
+  }
+/* Estilos para o menu sanduíche em telas menores */
+@media (max-width: 768px) {
+  .buttons {
+    display: none;
+  }
+
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    border-radius: 1px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .menu-icon.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+
+  }
+
+  .menu-icon.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-icon.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Estilos para o menu sanduíche aberto */
+  .buttons.open {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .buttons.open button {
+    margin: 0.5rem 0;
+  }
+}
+
+.home-btn {
+  position:fixed;
+  z-index: 10;
+  bottom: 5px;
+  right: calc(50% - 25px);
+  left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.home-btn:hover {
+  background-color: #0056b3;
+}
+    </style>
+</head>
+<body>
+  <a href="index.html" class="home-btn">
+    <i class="fas fa-home"></i>
+  </a>
+    <header>
+        <div class="logo"><a href="index.html">Home</a></div>
+        <div class="buttons">
+          <button onclick="location.href='mapa.html'">Mapa</button>
+          <button onclick="location.href='cartilha.html'">Cartilha</button>
+          <button onclick="location.href='sobre.html'">Sobre Nós</button>
+          <button onclick="location.href='monitoramento.html'">Monitoramento</button>
+        </div>
+        <div class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </header>
+      <main class="d-flex pes">
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas nibh eu metus ornare cursus. Sed scelerisque elementum augue nec lobortis. Morbi nec lacus eget velit cursus viverra. Maecenas elementum purus sed risus viverra, id dictum urna condimentum. Nam vulputate mauris non ligula pulvinar, elementum rhoncus justo eleifend. Morbi eget efficitur dui. Etiam eu nisl vel sapien sodales euismod non quis justo. Phasellus a tincidunt elit. Duis dignissim id dolor et iaculis.
+
+        Morbi ipsum nisl, lacinia et tempor sed, tristique sit amet metus. Praesent vulputate mattis neque, scelerisque porta leo sagittis vitae. Nam convallis, lacus non rutrum ornare, lorem risus efficitur enim, sit amet cursus mauris felis vitae sem. Etiam a lacus molestie, porta est non, mattis metus. Phasellus nec porta erat. Cras eu hendrerit odio. Donec sollicitudin sapien in nisi tristique euismod. Mauris eleifend pharetra sapien, eget bibendum risus. Fusce porta lobortis nisi id aliquam. Quisque vestibulum feugiat massa, in faucibus orci faucibus vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur ligula lorem, scelerisque at convallis eu, hendrerit ut tortor. Donec dignissim faucibus tempus. Sed ultricies metus et sapien finibus, ut euismod felis rhoncus. </p>
+        <img src="images/peslogo.png">
+      </main>
+      
+</body>
+<script>
+const menuIcon = document.querySelector('.menu-icon');
+const buttons = document.querySelector('.buttons');
+
+menuIcon.addEventListener('click', function() {
+  buttons.classList.toggle('open');
+  menuIcon.classList.toggle('open');
+
+  if (menuIcon.classList.contains('open')) {
+    // Quando o menu está aberto, o ícone se transforma em uma cruz (X)
+    menuIcon.innerHTML = '<span></span><span></span><span></span><span></span>';
+  } else {
+    // Quando o menu é fechado, o ícone volta ao estado normal
+    menuIcon.innerHTML = '<span></span><span></span><span></span>';
+  }
+});
+
+</script>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulário de Contato</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" lang="pt-br"/>
+  <meta name="viewport" content="width=device-width"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+	<style>
+		body{
+			background-color: #28a745
+		}
+form {
+  margin: 0 auto;
+  width: 70%;
+  max-width: 600px;
+  background: rgba(255, 255, 255,0.2);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f5f5f5;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  display: block;
+  background: #ffcc00;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+button[type="submit"]:hover {
+  background: #ffdb4d;
+}
+
+.home-btn {
+  position:fixed;
+  z-index: 10;
+  bottom: 5px;
+  right: calc(50% - 25px);
+  left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.home-btn:hover {
+  background-color: #0056b3;
+}
+
+	</style>
+</head>
+<body>
+	<form name="denuncia-form" method="POST" data-netlify="true">
+		<input type="hidden" name="form-name" value="denuncia-form" />
+		<label for="nome">Nome:</label>
+		<input type="text" id="nome" name="nome" required>
+		<br>
+		<label for="denuncia">Denúncia:</label>
+		<input type="text" id="denuncia" name="denuncia" required>
+		<br>
+		<label for="celular">Celular:</label>
+		<input type="tel" id="celular" name="celular">
+		<br>
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email">
+		<br>
+		<label for="descricao">Descrição da denúncia:</label>
+		<textarea id="descricao" name="descricao" rows="4" cols="50" required></textarea>
+		<br>
+		<button type="submit">Enviar</button>
+	  </form>
+	  <button onclick='location.href="index.html"' class="home-btn">
+		<i class="fas fa-home"></i>
+	</button>
+	  <script>
+		const form = document.querySelector('form[name="denuncia-form"]');
+		form.addEventListener('submit', (event) => {
+		  event.preventDefault();
+		  fetch('/', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: new URLSearchParams(new FormData(form)).toString(),
+		  }).then(() => {
+			alert('Sua denúncia foi enviada com sucesso!');
+			form.reset();
+		  }).catch(() => {
+			alert('Ocorreu um erro ao enviar a denúncia.');
+		  });
+		});
+	  </script>	  
+</body>
+</html>

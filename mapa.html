@@ -1,0 +1,209 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+
+    <title>Bacia do Alto Paraguai</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" lang="pt-br"/>
+    <meta name="viewport" content="width=device-width"> 
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+	<link rel="stylesheet" href="src/leaflet-search.css" />
+	<link rel="stylesheet" href="src/leaflet-measure.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link rel="stylesheet" href="src/L.Control.SlideMenu.css">
+    <link rel="stylesheet" href="cluster/MarkerCluster.css">
+    <link rel="stylesheet" href="cluster/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" href="src/L.Control.Window.css"/>
+
+	<script src="src/geojson/rios.js"></script>
+	<script src="src/geojson/TI.js"></script>
+	<script src="src/geojson/UC.js"></script>
+	<script src="src/geojson/bacia.js"></script>
+    <script src="src/geojson/assenMS.js"></script>
+    <script src="src/geojson/assenMT.js"></script>
+    <script src="src/geojson/coloniaP.js"></script>
+</head>
+
+<body>
+    <script src="src/L.Control.Window.js"></script>
+
+<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+<script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
+<script src="./src/leaflet-search.js"></script>
+<script src="./src/leaflet-measure.js"></script>
+<script src="./src/L.Control.SlideMenu.js"></script>
+
+<script>
+    const left = '<h3 id="cabeca">Bacia do Alto Paraguai<h3>'
+    const right = '<div class="header">Slide Menu (Right)</div>'
+    var coord = [
+    [-15.38228, -58.08322], [-15.27931, -58.27703], [-15.121, -58.43728], [-15.10908, -58.46278], [-15.11089, -58.475], [-15.10339, -58.48783], [-14.94944, -58.05722], [-14.80404, -56.37655], [-15.2732, -56.28454], [-15.34112, -56.27704], [-15.54608, -56.1709], [-14.95457, -56.44505], [-15.15478, -56.44721], [-15.34817, -56.995], [-14.89599, -58.65021], [-14.65784, -58.49849], [-14.80398, -58.58796], [-14.83869, -58.62181], [-16.43944, -55.30278], [-16.45, -55.32], [-14.67944, -57.75694], [-14.68917, -57.80222], [-15.00778, -58.07472], [-15.05528, -57.98917], [-15.02417, -58.05444], [-15.02417, -58.05444]
+    ];
+    let contents = `
+    <ul style="line-height: 2;" class="list-group">
+        <li class="list-group-item bg-success text-white"><h3 class="py-2">Rio Cabaçal</h3>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(0)" id="hidro1" class="cabacal">Cabaçal 1</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(1)" id="hidro2" class="py-2 cabacal">Cabaçal 2</a></br></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(2)" id="hidro3" class="py-2 cabacal">Cabaçal 3</a></br></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(3)" id="hidro4" class="py-2 cabacal">Cabaçal 4</a></br></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(4)" id="hidro5" class="py-2 cabacal">Cabaçal 5</a></br></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(5)" id="hidro6" class="py-2 cabacal">Cabaçal 6</a></br></li>
+
+        <li class="list-group-item bg-success text-white"><h3 class="py-2">Rio Vermelho ( alfuente do Cabaçal)</h3></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(22)" id="hidro23" class="py-1 vermelho">Salto do Céu</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(23)" id="hidro24" class="py-1 vermelho">Salto Caramujo</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(24)" id="hidro25" class="py-1 vermelho">Salto Vermelho I</a></li>
+
+        <li class="list-group-item bg-success text-white"><h3 class="py-2">Córrego Caramujo</h3></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(6)" id="hidro7" class="py-1 Caramujo">Caramujo</a></li>
+          
+        <li class="list-group-item bg-success text-white"><h3 class="py-2">Rio Cuiabá</h3></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(7)" id="hidro8" class="py-1 cuiaba">Perudá Montante</a></li> 
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(8)" id="hidro9" class="py-1 cuiaba">Iratambém II</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(9)" id="hidro10" class="py-1 cuiaba">Iratambém I</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(10)" id="hidro11" class="py-1 cuiaba">Guapira II</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(11)" id="hidro12" class="py-1 cuiaba">Angatu II Montante</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(12)" id="hidro13" class="py-1 cuiaba">Angatu I</a></li>
+
+        <li class="list-group-item bg-success text-white"><h3 class="py-2">Rio Jauquara</h3></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(13)" id="hidro14" class="py-1 jauquara">Araras</a></li>
+
+        <li class="list-group-item bg-success text-white"><h3 class="py-2">Rio Jauru</h3></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(14)" id="hidro15" class="jauru">Trairão 3</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(15)" id="hidro16" class="jauru">Areia Branca 3</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(16)" id="hidro17" class="jauru">Alagados 3</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(17)" id="hidro18" class="jauru">Estivadinho 3</a></li>
+
+        <li class="list-group-item bg-success text-white"><h3 class="py-2">Ribeirão Mutum</h3></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(18)" id="hidro19" class="mutum">Mutum I</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(19)" id="hidro20" class="mutum">Mantovilis</a></li>
+
+        <li class="list-group-item bg-success text-white"><h3 class="py-2">Rio Sepotuba</h3></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;" onclick="voa(20)" id="hidro21" class="sepotuba">Paiaguás</a></li>
+        <li class="list-group-item"><a style="text-decoration:none;color:black;border:none;" onclick="voa(21)" id="hidro22" class="sepotuba">Salto Marciel</a></li>
+
+    </ul>
+`;
+
+function voa(i) {
+    map.flyTo(coord[i], 10);
+
+
+}
+
+function userL(){
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        map.flyTo([latitude, longitude], 13);
+      },
+      () => {
+        console.log("Could not get location.");
+      }
+    );
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+}
+</script>
+	<div id="main">
+		<div id="lista" class="bg-white" >
+			<h1 id="cabeca" class="bg-success text-white p-3"><strong>Bacia do Alto Paraguai</strong></h1>
+            <input type="checkbox" id="usinas" class="m-3" checked/><label for="usinas"><img src="images/Mark/usin.png" width="60px">Hidroelétricas</label> <br>
+                
+            <input type="checkbox" id="unidades" class="m-3" checked /><label for="unidades"><img src="images/Mark/uc.png" width="60px">Unidade de Conservação</label><br>
+                
+            <input type="checkbox" id="terras" class="m-3" checked /><label for="terras"><img src="images/Mark/ti.png" width="60px">Terra Indigena</label><br>
+
+            <input type="checkbox" id="pescaC" class="m-3" checked /><label for="pescaC"><img src="images/Mark/pesca.png" width="60px">Colônia de Pesca</label><br>
+            
+            <li><input type="checkbox" id="assent" class="m-3" checked /><label for="assent"><img src="images/Mark/assen.png" width="60px">Assentamento</label><br>
+                <a href="#map" class=" p-2 btn btn-danger" id="Mapa">Ir pro mapa</a>
+                <button onclick='location.href="index.html"' class="home-btn">
+                    <i class="fas fa-home"></i>
+                </button>
+            <button class="btn btn-primary m-3" onclick='userL()'>Minha comunidade</button>
+
+		</div>
+        <div id="map"></div>
+	</div>
+    
+	<script src="./src/map.js"></script>
+    
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="cluster/leaflet.markercluster.js"></script>
+<script src="cluster/leaflet.markercluster-src.js"></script>
+</body>
+<script>
+        
+var checkbox = document.querySelector("#usinas")
+var unidades = document.querySelector("#unidades")
+var terrasI = document.querySelector("#terras")
+var pescaC = document.querySelector("#pescaC")
+var assenMSMT = document.querySelector("#assent")
+
+
+unidades.addEventListener('click', function() {
+    if (unidades.checked) {
+      map.addLayer(unidadeC)
+    } else {
+      map.removeLayer(unidadeC)
+    }
+  })
+
+checkbox.addEventListener( 'click', function() {
+    if(this.checked) {
+        map.addLayer(rioCabacal)
+        map.addLayer(rioVermelho)
+        map.addLayer(corregoCaramujo)
+        map.addLayer(rioCuiaba)
+        map.addLayer(rioJauquara)
+        map.addLayer(rioJauru)
+        map.addLayer(ribeiraoMutum)
+        map.addLayer(rioSeputuba)
+    } else {
+        map.removeLayer(rioCabacal)
+        map.removeLayer(rioVermelho)
+        map.removeLayer(corregoCaramujo)
+        map.removeLayer(rioCuiaba)
+        map.removeLayer(rioJauquara)
+        map.removeLayer(rioJauru)
+        map.removeLayer(ribeiraoMutum)
+        map.removeLayer(rioSeputuba)
+    }
+})
+
+
+pescaC.addEventListener( 'click', function() {
+    if(this.checked) {
+        map.addLayer(pes)
+    } else {
+        map.removeLayer(pes)
+    }
+})
+
+assenMSMT.addEventListener( 'click', function() {
+    if(this.checked) {
+        map.addLayer(ms)
+        map.addLayer(mt)
+    } else {
+        map.removeLayer(ms)
+        map.removeLayer(mt)
+
+    }
+})
+
+terrasI.addEventListener( 'click', function() {
+    if(this.checked) {
+        map.addLayer(povoI)
+    } else {
+        map.removeLayer(povoI)
+    }
+})
+</script>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <style>
+body{
+  font-family: 'Open Sans', sans-serif;
+  overflow-x: hidden;
+}
+      .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+.slide.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a{
+  text-decoration: none;
+}
+
+p{
+  font-size: 40px;
+  padding: 10px;
+}
+
+.slide-in{
+  animation: slide-in 1.5s ease-out;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.meu-video{
+  width: 600px;
+}
+
+.primeiro{
+  background-color: #1C4827;
+color: #B7FF8E;
+
+}
+
+.home-btn {
+  position:fixed;
+  z-index: 10;
+  bottom: 5px;
+  right: calc(50% - 25px);
+  left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.home-btn:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 700px) {
+  .slide.active {
+  margin: 0;
+  display: block;
+  
+}
+img{
+  width: 70vw;
+  padding: 20px;
+
+  
+}
+p{
+  font-size: 20px;
+  padding: 5px;
+}
+#primeiro{
+  margin-top: 30vh;
+  padding: 10px;
+}
+}
+
+    </style>
+</head>
+<body>
+  <button onclick="location.href='index.html'" class="home-btn">
+    <i class="fas fa-home"></i>
+</button>
+  
+<div class="slides">
+    <div class="slide active bg-success">
+      <p id="primeiro">
+        Por que a agricultura familiar é mais importante que os empreendimentos Hidrelétricos?
+      </p>
+
+	  </div>
+    
+    <div class="slide p-5 bg-primary">
+        <p>
+          <strong>1.</strong> Agricultura familiar é responsável por grande parte da produção de alimentos em todo o mundo, e é fundamental para garantir a segurança alimentar das comunidades locais.
+        </p> 
+      <div class="w-50">
+        <!--
+        <video class="meu-video" autoplay>
+          <source src="images/familiar/dineiro_Trim.mp4" type="video/mp4">
+        </video>
+        -->
+        <img src="images/familiar/criancac.png"">
+      </div>
+    </div>
+    <div class="slide p-5 bg-success">
+      <p>
+        2. A agricultura familiar preserva a biodiversidade e os recursos naturais, pois muitas vezes é realizada de forma mais sustentável e integrada com o meio ambiente.
+      </p>
+      <div class="w-50">
+        <img src="images/familiar/planta.png">
+      </div>
+    </div>
+    <div class="slide p-5 bg-primary">
+      <p>
+        3. A agricultura familiar ajuda a combater a pobreza e a desigualdade, fornecendo meios de subsistência para pequenos agricultores e suas famílias.
+      </p>
+      <div class="w-50">
+        <img src="images/familiar/economia.png">
+      </div>
+    </div>
+    <div class="slide p-5 bg-success">
+      <p>
+        4. A agricultura familiar é importante para a economia local, pois muitas vezes os produtos são vendidos diretamente aos consumidores, gerando empregos e renda nas comunidades.
+      </p>
+     
+      <div class="w-50">
+        <img src="images/familiar/empreend.png">
+      </div>
+    </div>
+    <div class="slide p-5 bg-primary">
+      <p>
+        5. A agricultura familiar é uma fonte importante de conhecimento tradicional e práticas agrícolas sustentáveis, que são essenciais para a resiliência das comunidades rurais.
+      </p>
+      
+      <div class="w-50">
+        <img src="images/familiar/resiliencia.png">
+      </div>
+    </div>
+    <div class="slide p-5 bg-success">
+      <p>
+        6. A agricultura familiar é fundamental para a diversidade cultural e gastronômica, pois muitos alimentos tradicionais são produzidos e cultivados por pequenos agricultores.
+      </p>
+      
+      <div class="w-50">
+        <img src="images/familiar/cozinhando.png">
+      </div>
+    </div>
+    <div class="slide p-5 bg-primary">
+      <p>
+        7. A agricultura familiar é importante para a adaptação às mudanças climáticas, pois muitos pequenos agricultores estão na linha de frente das consequências das mudanças climáticas e precisam de apoio para se adaptar.
+      </p>
+      <div class="w-50">
+        <img src="images/familiar/climate.png">
+      </div>
+      
+    </div>
+    <div class="slide p-5 bg-success">
+      <p>
+        8. A agricultura familiar é uma forma de manter a identidade e a história das comunidades rurais, preservando suas tradições e modos de vida.
+      </p>
+      
+      <div class="w-50">
+        <img src="images/familiar/viola.png">
+      </div>
+    </div>
+    <div class="slide p-5 bg-primary">
+      <p>
+        9. A agricultura familiar é importante para a saúde e o bem-estar das pessoas, pois muitas vezes produz alimentos frescos e saudáveis, sem agrotóxicos e produtos químicos prejudiciais à saúde.
+      </p>
+      
+      <div class="w-50">
+        <img src="images/familiar/cesta.png">
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script>
+  var slides = document.querySelectorAll('.slide');
+var currentSlide = 0;
+var totalSlides = slides.length;
+
+function showSlide(n) {
+  if (n < 0) {
+    n = 0;
+  }
+  if (n >= totalSlides) {
+    n = totalSlides - 1;
+  }
+  slides[currentSlide].classList.remove('active');
+  slides[n].classList.add('active');
+  
+  // Adicionar classe de animação nas tags <p> do slide atual
+    var currentSlidePs = slides[n].querySelectorAll('p');
+  currentSlidePs.forEach(function(p) {
+    p.classList.add('slide-in');
+  });
+  
+
+  currentSlide = n;
+}
+
+showSlide(0);
+
+var touchstartX = 0;
+var touchendX = 0;
+
+document.addEventListener('touchstart', function(event) {
+  touchstartX = event.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', function(event) {
+  touchendX = event.changedTouches[0].screenX;
+  handleGesture();
+});
+
+function handleGesture() {
+  if (touchendX < touchstartX) { // swipe para a esquerda
+    showSlide(currentSlide + 1);
+  }
+
+  if (touchendX > touchstartX) { // swipe para a direita
+    showSlide(currentSlide - 1);
+  }
+}
+
+document.addEventListener('keydown', function(event) {
+  if (event.keyCode == 37) { // seta para esquerda
+    showSlide(currentSlide - 1);
+  }
+  if (event.keyCode == 39) { // seta para direita
+    showSlide(currentSlide + 1);
+  }
+});
+
+  const meuVideo = document.getElementsByClassName("meu-video");
+  meuVideo.addEventListener("ended", function() {
+    this.pause();
+  });
+
+
+  </script>
+  
+      
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</html>  

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notícias sobre o Pantanal</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- HTML -->
+
+<div id="noticias"></div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  // URL da pesquisa no Google News
+  const url = 'https://news.google.com/search?q=pantanal&hl=pt-BR&gl=BR&ceid=BR%3Apt-419';
+
+  // Seleciona o elemento HTML para exibir as notícias
+  const noticias = document.getElementById('noticias');
+
+  // Faz uma solicitação GET para a URL da pesquisa
+  axios.get(url)
+    .then(response => {
+      // Parsing do HTML com DOMParser
+      const parser = new DOMParser();
+      const html = parser.parseFromString(response.data, 'text/html');
+
+      // Seleciona todas as manchetes das notícias
+      const headlines = html.querySelectorAll('.DY5T1d');
+
+      // Seleciona todos os links das notícias
+      const links = html.querySelectorAll('.DY5T1d > a');
+
+      // Cria uma lista de objetos com as informações das notícias
+      const newsList = [];
+      headlines.forEach((headline, index) => {
+        newsList.push({
+          headline: headline.innerText,
+          link: 'https://news.google.com' + links[index].getAttribute('href').substring(1)
+        });
+      });
+
+      // Cria elementos HTML para exibir as notícias
+      newsList.forEach(news => {
+        const headlineEl = document.createElement('h2');
+        const linkEl = document.createElement('a');
+        const hrEl = document.createElement('hr');
+
+        headlineEl.innerText = news.headline;
+        linkEl.setAttribute('href', news.link);
+        linkEl.setAttribute('target', '_blank');
+        linkEl.appendChild(headlineEl);
+        noticias.appendChild(linkEl);
+        noticias.appendChild(hrEl);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+</script>
+
+</body>
+</html>

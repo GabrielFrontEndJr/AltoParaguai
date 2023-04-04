@@ -1,0 +1,61 @@
+body {
+    background-image: url('images/riosp.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    font-size: 48px;
+    margin-top: 100px;
+  }
+
+  p{
+    background-color: rgba(2, 49, 16, 0.6);
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 5px;
+    
+  }
+
+  .buttons {
+    margin-top: 50px;
+  }
+  
+  button {
+    background-color: #048c2d;
+    color: #FFFFFF;
+    font-size: 24px;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #004e17;
+  }
+
+  .desktop{
+    display: block;
+  }
+  .mobile{
+    display:none;
+  }
+
+  @media (max-width: 700px) {
+    body{
+      background-size: auto;
+    }
+    .desktop{
+      display:none;
+    }
+    .mobile{
+      display: block;
+    }
+  }
